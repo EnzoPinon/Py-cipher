@@ -11,7 +11,7 @@ while user_stop == False:
 
     # ask user to input an encrypted statement.
     encrypted = input("Input a statement that is already encrypted, or say 'stop' to stop: ")
-    
+
      # check if the user wanted to stop
 
     if encrypted.lower() == "stop":
@@ -23,3 +23,14 @@ while user_stop == False:
         # say goodbye!
     
         print("Goodbye and hope to see you again!")
+
+    else:    
+        # attempt to replace every encrypted symbol with an appropriate equivalent.
+        first_vowel = encrypted.replace('*', 'a')
+        second_vowel = first_vowel.replace('&', 'e')
+        third_vowel = second_vowel.replace('#', 'i')
+        fourth_vowel = third_vowel.replace('+', 'o')
+        decrypted = fourth_vowel.replace('!', 'u')
+
+        # print the decrypted message in low caps
+        print("The decrypted message is: ", decrypted.lower())
