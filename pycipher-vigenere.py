@@ -15,4 +15,19 @@ while user_stop == False:
         print("Stopping! See you soon!")
         break
 
+    # We break things down into two: Encode and Decode.
+    if request_type.lower() == "encode":
+        # ask for the string
+
+        message = str(input("Please state the message to encode, no spaces, all caps: "))
+        #ask for the key
+        key = str(input("Please state the key, no spaces, all caps: "))
     
+        # remove spaces
+        message_nospace = message.replace(" ", "")
+        key_nospace = key.replace(" ", "")
+
+        # all caps
+
+        string_encode = message_nospace.upper()
+        encode_key = key_nospace.upper()
