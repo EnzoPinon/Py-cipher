@@ -10,7 +10,7 @@ print("Hi there! I am PyCipher-Simple! I only encrypt and decrypt vowels.")
 while user_stop == False:
 
     # ask user to input an encrypted statement.
-    encrypted = input("Input a statement that is already encrypted, or say 'stop' to stop: ")
+    encrypted = input("Indicate whether you wish to 'encrypt', 'decrypt', or 'stop' the program: ")
 
      # check if the user wanted to stop
 
@@ -24,13 +24,17 @@ while user_stop == False:
     
         print("Goodbye and hope to see you again!")
 
-    else:    
+    if encrypted.lower() == "decrypt":
+        # ask for word to decrypt
+        todecypt = input("You have chosen 'decrypt'! Please type the message to decode.")
+
         # attempt to replace every encrypted symbol with an appropriate equivalent.
-        first_vowel = encrypted.replace('*', 'a')
+        first_vowel = todecypt.replace('*', 'a')
         second_vowel = first_vowel.replace('&', 'e')
         third_vowel = second_vowel.replace('#', 'i')
         fourth_vowel = third_vowel.replace('+', 'o')
-        decrypted = fourth_vowel.replace('!', 'u')
+        final_decrypted = fourth_vowel.replace('!', 'u')
 
         # print the decrypted message in low caps
-        print("The decrypted message is: ", decrypted.lower())
+        print("The encrypted message is: ", todecypt)
+        print("The decrypted message is: ", final_decrypted.lower())
