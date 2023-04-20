@@ -31,4 +31,32 @@ while user_stop == False:
 
         string_encode = message_nospace.upper()
         encode_key = key_nospace.upper()
-    
+
+                 # begin encryption
+        # define list of two, one for regenerating the key with the right conditions and the original message
+        encrypted = []
+        listkey = list(encode_key)
+        # check if the key length matches the string, then encode
+        if(len(string_encode) == len(encode_key)):
+            # encode the message
+            for i in range(len(string_encode)):
+                compute = (ord(string_encode[i]) + ord(encode_key[i])) % 26
+                compute += ord('A')
+                encrypted.append(chr(compute))
+            # print results
+            print("Original Text: ", string_encode)
+            print("Key: ", key)
+            print("Encrypted text: ", "".join(encrypted))
+        else:
+            # repeat the key until it matches the string
+            for i in range(len(string_encode) - len(encode_key)):
+                listkey.append(encode_key[i % len(encode_key)])
+            encode_key = "".join(listkey)
+            # encode message
+            for i in range(len(string_encode)):
+                compute = (ord(string_encode[i]) + ord(encode_key[i])) % 26
+                compute += ord('A')
+                encrypted.append(chr(compute))
+            print("Original Text: ", string_encode)
+            print("Key: ", key)
+            print("Encrypted text: ", "".join(encrypted))
