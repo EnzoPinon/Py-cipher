@@ -11,7 +11,6 @@ while user_stop == False:
     #check if it is to stop
     print(request_type)
     if request_type.lower() == 'stop':
-        user_stop = True
         print("Stopping! See you soon!")
         break
 
@@ -60,7 +59,7 @@ while user_stop == False:
             print("Original Text: ", string_encode)
             print("Key: ", key)
             print("Encrypted text: ", "".join(encrypted))
-            
+
     if request_type.lower() == "decode":
         # ask for the string
 
