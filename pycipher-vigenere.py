@@ -60,3 +60,48 @@ while user_stop == False:
             print("Original Text: ", string_encode)
             print("Key: ", key)
             print("Encrypted text: ", "".join(encrypted))
+            
+    if request_type.lower() == "decode":
+        # ask for the string
+
+        message = str(input("Please state the message to decode, no spaces, all caps: "))
+        #ask for the key
+        key = str(input("Please state the key, no spaces, all caps: "))
+    
+        # remove spaces
+        message_nospace = message.replace(" ", "")
+        key_nospace = key.replace(" ", "")
+
+        # all caps
+
+        string_encode = message_nospace.upper()
+        encode_key = key_nospace.upper()
+        # begin decryption
+        # define list of two, one for regenerating the key with the right conditions and the encrypted message
+        encrypted = []
+        listkey = list(encode_key)
+        # check if the key length matches the string, then decode
+        if(len(string_encode) == len(encode_key)):
+            # decrypt message with key 
+            for i in range(len(string_encode)):
+                compute = (ord(string_encode[i]) - ord(encode_key[i] + 26)) % 26
+                compute += ord('A')
+                encrypted.append(chr(compute))
+            # print results
+            print("Encrypted Text: ", string_encode)
+            print("Key: ", key)
+            print("Original text: ", "".join(encrypted))   
+        else:
+            # repeat the key until it matches the string
+            for i in range(len(string_encode) - len(encode_key)):
+                listkey.append(encode_key[i % len(encode_key)])
+            encode_key = "".join(listkey)
+            # decrypt the message with the key
+            for i in range(len(string_encode)):
+                compute = (ord(string_encode[i]) - ord(encode_key[i]) + 26) % 26
+                compute += ord('A')
+                encrypted.append(chr(compute))
+            # release results
+            print("Encrypted Text: ", string_encode)
+            print("Key: ", key)
+            print("Original text: ", "".join(encrypted))
